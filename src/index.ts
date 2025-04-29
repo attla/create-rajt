@@ -161,7 +161,7 @@ async function main(
 
     const templateDir = path.resolve(
       fileURLToPath(import.meta.url),
-      `../templates/${template}`,
+      `./templates/${template}`,
     )
 
     const write = (file: string, content?: string) => {
