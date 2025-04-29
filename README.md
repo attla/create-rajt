@@ -49,14 +49,6 @@ Allows you to specify which package manager to use.
 npm create rajt@latest ./my-app -- --pm pnpm
 ```
 
-### `-o, --offline`
-
-Use the local cache instead of fetching the latest templates.
-
-```
-npm create rajt@latest ./my-app -- --offline
-```
-
 ## License
 
 This package is licensed under the [MIT license](LICENSE) © [Zunq](https://zunq.com).
