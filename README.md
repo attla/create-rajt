@@ -7,17 +7,17 @@ Create a rajt application from starter templates.
 Starter templates are available for each platform. Use one the following "create-rajt" commands.
 
 ```bash
+# bun
+bun create rajt@latest
+
+# pnpm
+pnpm create rajt@latest
+
 # npm
 npm create rajt@latest
 
 # yarn
 yarn create rajt
-
-# pnpm
-pnpm create rajt@latest
-
-# bun
-bun create rajt@latest
 
 # deno
 deno run -A npm:create-rajt@latest
