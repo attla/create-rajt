@@ -1,4 +1,3 @@
-import { fileURLToPath } from 'node:url'
 import confirm from '@inquirer/confirm'
 import input from '@inquirer/input'
 import select from '@inquirer/select'
@@ -159,10 +158,7 @@ async function main(
 
     const spinner = createSpinner('Cloning the template').start()
 
-    const templateDir = path.resolve(
-      fileURLToPath(import.meta.url),
-      `./templates/${template}`,
-    )
+    const templateDir = path.resolve(__dirname, `./templates/${template}`)
 
     const write = (file: string, content?: string) => {
       const targetPath = path.join(root, renameFiles[file] ?? file)
@@ -177,15 +173,6 @@ async function main(
     for (const file of files.filter((f) => f !== 'package.json')) {
       write(file)
     }
-
-    // await downloadTemplate(
-    //   `gh:${config.user}/${config.repository}/${config.directory}/${template}#${config.ref}`,
-    //   {
-    //     dir: root,
-    //     offline,
-    //     force: true,
-    //   },
-    // )
 
     spinner.success()
     emitter.emit('dependencies')
