@@ -1,3 +1,6 @@
+import fs from 'node:fs'
+import path from 'node:path'
+import EventEmitter from 'node:events'
 import confirm from '@inquirer/confirm'
 import input from '@inquirer/input'
 import select from '@inquirer/select'
@@ -5,9 +8,6 @@ import { Option, program } from 'commander'
 import type { Command } from 'commander'
 import { createSpinner } from 'nanospinner'
 import * as picocolor from 'picocolors'
-import EventEmitter from 'node:events'
-import fs from 'node:fs'
-import path from 'node:path'
 import { version } from '../package.json'
 import { projectDependenciesHook } from './hook'
 // import { afterCreateHook } from './hooks/after-create'
@@ -197,7 +197,7 @@ async function main(
     fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2))
   }
 
-  emitter.on('completed', () => {
+  // emitter.on('completed', () => {
     console.log(picocolor.green(`🎉 ${picocolor.bold('Copied project files')}`))
     console.log(
       picocolor.gray('Get started with:'),
@@ -205,7 +205,7 @@ async function main(
     )
     // eslint-disable-next-line n/no-process-exit
     process.exit(0)
-  })
+  // })
 }
 
 program.parse()

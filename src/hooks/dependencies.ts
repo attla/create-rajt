@@ -115,7 +115,7 @@ const registerInstallationHook = (
         exit(procExit)
       }
 
-      emitter.emit('completed')
+      // emitter.emit('completed')
     })
 
     return
