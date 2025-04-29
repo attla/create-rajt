@@ -1,0 +1,17 @@
+{
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "npx rajt dev",
+    "local": "npx rajt local",
+    "build": "npx rajt build",
+    "build:watch": "npx rajt build:watch",
+    "export": "npx rajt export",
+    "zip": "npx rajt zip",
+    "deploy": "npx rajt deploy"
+  },
+  "dependencies": {
+    "rajt": "*"
+  },
+  "devDependencies": {}
+}
