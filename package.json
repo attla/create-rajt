@@ -23,10 +23,10 @@
     "type": "git",
     "url": "https://github.com/attla/create-rajt.git"
   },
-  "homepage": "https://zunq.com",
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
+  "homepage": "https://zunq.dev",
   "devDependencies": {
     "@inquirer/confirm": "^5.1.8",
     "@inquirer/input": "^4.1.8",
