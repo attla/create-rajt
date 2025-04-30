@@ -2,16 +2,15 @@
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
-    "dev": "npx rajt dev",
-    "local": "npx rajt local",
-    "build": "npx rajt build",
-    "build:watch": "npx rajt build:watch",
-    "export": "npx rajt export",
-    "zip": "npx rajt zip",
-    "deploy": "npx rajt deploy"
+    "dev": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt dev",
+    "build": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt build",
+    "build:watch": "NODE_PATH=$(pwd)/node_modules run --silent run --cwd ./node_modules/rajt build:watch",
+    "export": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt export",
+    "local": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt local",
+    "zip": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt zip",
+    "deploy": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt deploy"
   },
   "dependencies": {
     "rajt": "*"
-  },
-  "devDependencies": {}
+  }
 }
