@@ -86,70 +86,70 @@ async function main(
   options: ArgOptions,
   command: Command,
 ) {
-  console.log(picocolor.gray(`${command.name()} version ${command.version()}`))
-
-  const { install, pm, template: templateArg } = options
-
-  let target = ''
-  if (targetDir) {
-    target = targetDir
-    console.log(`${picocolor.bold(`${picocolor.green('✔')} Using target directory`)} … ${target}`)
-  } else {
-    target = await input({
-      message: 'Target directory',
-      default: 'my-app'
-    })
-  }
-
-  const projectName = isCurrentDirRegex.test(target)
-    ? path.basename(process.cwd())
-    : path.basename(target)
-
-  const template =
-    templateArg ||
-    (await select({
-      loop: true,
-      message: 'Which template do you want to use?',
-      choices: templates.map(v => ({
-        title: v,
-        value: v,
-      })),
-      default: 'aws-lambda',
-    }))
-
-  if (!template)
-    throw new Error('No template selected')
-
-  if (!templates.includes(template))
-    throw new Error(`Invalid template selected: ${template}`)
-
-  if (fs.existsSync(target)) {
-    if (fs.readdirSync(target).length > 0) {
-      const response = await confirm({
-        message: 'Directory not empty. Continue?',
-        default: false,
-      })
-      if (!response) {
-        // eslint-disable-next-line n/no-process-exit
-        process.exit(1)
-      }
-    }
-  } else {
-    mkdirp(target)
-  }
-
-  const root = path.join(process.cwd(), target)
-  const emitter = new EventEmitter<EventMap>()
-
-  // Default package manager
-  let packageManager = pm ?? 'npm'
-  emitter.addListener('packageManager', v => {
-    packageManager = String(v)
-  })
-
-  registerInstallationHook(template, install, pm, emitter)
-
   try {
+    console.log(picocolor.gray(`${command.name()} version ${command.version()}`))
+
+    const { install, pm, template: templateArg } = options
+
+    let target = ''
+    if (targetDir) {
+      target = targetDir
+      console.log(`${picocolor.bold(`${picocolor.green('✔')} Using target directory`)} … ${target}`)
+    } else {
+      target = await input({
+        message: 'Target directory',
+        default: 'my-app'
+      })
+    }
+
+    const projectName = isCurrentDirRegex.test(target)
+      ? path.basename(process.cwd())
+      : path.basename(target)
+
+    const template =
+      templateArg ||
+      (await select({
+        loop: true,
+        message: 'Which template do you want to use?',
+        choices: templates.map(v => ({
+          title: v,
+          value: v,
+        })),
+        default: 'aws-lambda',
+      }))
+
+    if (!template)
+      throw new Error('No template selected')
+
+    if (!templates.includes(template))
+      throw new Error(`Invalid template selected: ${template}`)
+
+    if (fs.existsSync(target)) {
+      if (fs.readdirSync(target).length > 0) {
+        const response = await confirm({
+          message: 'Directory not empty. Continue?',
+          default: false,
+        })
+        if (!response) {
+          // eslint-disable-next-line n/no-process-exit
+          process.exit(1)
+        }
+      }
+    } else {
+      mkdirp(target)
+    }
+
+    const root = path.join(process.cwd(), target)
+    const emitter = new EventEmitter<EventMap>()
+
+    // Default package manager
+    let packageManager = pm ?? 'npm'
+    emitter.addListener('packageManager', v => {
+      packageManager = String(v)
+    })
+
+    registerInstallationHook(template, install, pm, emitter)
+
     await Promise.all(
       projectDependenciesHook.applyHook(template, {
         directoryPath: root,
@@ -182,30 +182,24 @@ async function main(
     //   directoryPath: root,
     //   packageManager,
     // })
-  } catch (e) {
-    throw new Error(
-      `Error running hook for ${template}: ${
-        e instanceof Error ? e.message : e
-      }`,
-    )
-  }
 
-  const pkgPath = path.join(root, 'package.json')
-  if (fs.existsSync(pkgPath)) {
-    const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'))
-    pkg.name = projectName
-    fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2))
-  }
+    const pkgPath = path.join(root, 'package.json')
+    if (fs.existsSync(pkgPath)) {
+      const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'))
+      pkg.name = projectName
+      fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2))
+    }
 
-  // emitter.on('completed', () => {
-    console.log(picocolor.green(`🎉 ${picocolor.bold('Copied project files')}`))
-    console.log(
-      picocolor.gray('Get started with:'),
-      picocolor.bold(`cd ${target}`),
-    )
-    // eslint-disable-next-line n/no-process-exit
-    process.exit(0)
-  // })
+    // emitter.on('completed', () => {
+      console.log(picocolor.green(`🎉 ${picocolor.bold('Copied project files')}`))
+      console.log(
+        picocolor.gray('Get started with:'),
+        picocolor.bold(`cd ${target}`),
+      )
+      // eslint-disable-next-line n/no-process-exit
+      process.exit(0)
+    // })
+  } catch {}
 }
 
 program.parse()
