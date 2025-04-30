@@ -3,10 +3,11 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt dev",
+    "local": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt local",
     "build": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt build",
     "build:watch": "NODE_PATH=$(pwd)/node_modules run --silent run --cwd ./node_modules/rajt build:watch",
+    "sam:local": "bun run --silent --cwd ./node_modules/rajt sam:local",
     "export": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt export",
-    "local": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt local",
     "zip": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt zip",
     "deploy": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt deploy"
   },
