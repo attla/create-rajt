@@ -170,12 +170,11 @@ async function main(
     }
 
     const files = fs.readdirSync(templateDir)
-    for (const file of files.filter((f) => f !== 'package.json')) {
+    for (const file of files.filter(f => f !== 'package.json')) {
       write(file)
     }
 
     spinner.success()
-    emitter.emit('dependencies')
 
     // afterCreateHook.applyHook(template, {
     //   projectName,
@@ -183,12 +182,14 @@ async function main(
     //   packageManager,
     // })
 
-    const pkgPath = path.join(root, 'package.json')
+    const pkgPath = path.resolve(__dirname, `./templates/${template}/package.json`)
     if (fs.existsSync(pkgPath)) {
       const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'))
       pkg.name = projectName
-      fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2))
+      fs.writeFileSync(path.join(root, 'package.json'), JSON.stringify(pkg, null, 2))
     }
+
+    emitter.emit('dependencies')
 
     // emitter.on('completed', () => {
       console.log(picocolor.green(`🎉 ${picocolor.bold('Copied project files')}`))
