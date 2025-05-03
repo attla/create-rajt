@@ -6,10 +6,15 @@
     "local": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt local",
     "build": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt build",
     "build:watch": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt build:watch",
-    "sam:local": "bun run --silent --cwd ./node_modules/rajt sam:local",
     "export": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt export",
-    "zip": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt zip",
-    "deploy": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt deploy"
+    "package": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt package",
+    "deploy": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt deploy",
+    "update": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt update",
+    "sam:local": "bun run --silent --cwd ./node_modules/rajt sam:local",
+    "sam:package": "bun run --silent --cwd ./node_modules/rajt sam:package",
+    "sam:deploy": "bun run --silent --cwd ./node_modules/rajt sam:deploy",
+    "sam:update": "bun run --silent --cwd ./node_modules/rajt sam:update",
+    "zip": "bun run --silent --cwd ./node_modules/rajt zip"
   },
   "dependencies": {
     "rajt": "*"

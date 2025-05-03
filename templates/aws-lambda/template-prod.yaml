@@ -1,0 +1,51 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: Rajt PRD API
+
+Resources:
+  # LlrtLayer: # deploy do layer na AWS
+  #   Type: AWS::Serverless::LayerVersion
+  #   Properties:
+  #     ContentUri: llrt-lambda-arm64-v0.5.1-beta.zip
+  #     CompatibleRuntimes:
+  #       - provided.al2023
+  #     CompatibleArchitectures:
+  #       - arm64
+
+  RajtApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      Name: rajt-api
+      # CorsConfiguration:
+      #   AllowMethods:
+      #     - GET
+      #     - POST
+      #     - PUT
+      #     - DELETE
+      #     - OPTIONS
+      #   AllowOrigins:
+      #     - "*"
+
+  RajtApiFunction:
+    Type: AWS::Serverless::Function
+    Metadata:
+      SkipBuild: true
+    Properties:
+      FunctionName: rajt-api
+      MemorySize: 128
+      Timeout: 5
+      CodeUri: dist/
+      Handler: index.handler
+      Runtime: provided.al2023
+      Architectures:
+        - arm64
+      Layers:
+        # - arn:aws:lambda:us-east-1:$ACC_ID:layer:LlrtLayer:$VERSION
+        - !Ref LlrtLayer # Referencia o layer deployado
+      Events:
+        Root:
+          Type: HttpApi
+          Properties:
+            Path: /{proxy+}
+            Method: ANY
+            ApiId: !Ref RajtApi

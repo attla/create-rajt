@@ -10,12 +10,13 @@ Resources:
   LlrtLayer:
     Type: AWS::Serverless::LayerVersion
     Properties:
-      ContentUri: llrt-lambda-arm64.zip
+      # See https://github.com/awslabs/llrt/releases for get latest LLRT version
+      ContentUri: llrt-lambda-arm64.zip # Your LLRT binary
       CompatibleRuntimes:
         - provided.al2023
       CompatibleArchitectures:
         - arm64
-  HelloWorldFunction:
+  RajtApiFunction:
     Type: AWS::Serverless::Function
     Metadata:
       SkipBuild: true

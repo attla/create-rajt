@@ -6,6 +6,7 @@ tmp/
 .trash
 .trash*
 lambda.zip
+packaged.yaml
 
 # dependencies
 node_modules
