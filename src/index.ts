@@ -21,6 +21,7 @@ const isCurrentDirRegex = /^(\.\/|\.\\|\.)$/
 
 const templates = [
   'aws-lambda',
+  'cf-workers',
 ]
 
 const renameFiles: Record<string, string | undefined> = {

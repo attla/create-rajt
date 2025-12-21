@@ -1,0 +1,23 @@
+name = "rajt-api"
+# route = "example.com"
+main = "index.js"
+compatibility_date = "2025-12-20"
+
+compatibility_flags = [ "nodejs_compat" ]
+no_bundle = true
+[build]
+# no commands ou outdir - wrangler dont will build
+
+# workers_dev = false
+# preview_urls = false
+
+# [observability]
+# enabled = true
+# head_sampling_rate = 0.1 # 10% of requests are logged
+
+# Bindings (KV, D1, R2 etc)
+# kv_namespaces = []
+# d1_databases = []
+
+# [env.production]
+# name = "rajt-api-prod"

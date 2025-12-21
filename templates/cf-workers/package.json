@@ -1,5 +1,5 @@
 {
-  "name": "rajt-aws-template",
+  "name": "rajt-cf-workers-template",
   "version": "0.0.0",
   "main": "dist/index.js",
   "type": "module",
