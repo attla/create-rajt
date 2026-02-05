@@ -1,38 +1,32 @@
 {
   "name": "rajt-cf-workers-template",
   "version": "0.0.0",
-  "main": "dist/index.js",
+  "main": ".rajt/dist/index.js",
   "type": "module",
   "scripts": {
-
-    "dev": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt dev",
-    "aws:local": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt aws:local",
-    "aws:build": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt aws:build",
-    "cf:build": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt cf:build",
-    "aws:build:watch": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt aws:build:watch",
-    "cf:build:watch": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt cf:build:watch",
-    "aws:export": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt aws:export",
-    "cf:export": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt cf:export",
-    "aws:package": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt aws:package",
-    "aws:deploy": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt aws:deploy",
-    "aws:update": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt aws:update",
-    "sam:local": "bun run --silent --cwd ./node_modules/rajt sam:local",
-    "sam:package": "bun run --silent --cwd ./node_modules/rajt sam:package",
-    "sam:deploy": "bun run --silent --cwd ./node_modules/rajt sam:deploy",
-    "sam:update": "bun run --silent --cwd ./node_modules/rajt sam:update",
-    "cf:local": "bun run --silent --cwd ./node_modules/rajt cf:local",
-    "cf:deploy": "NODE_PATH=$(pwd)/node_modules bun run --silent --cwd ./node_modules/rajt cf:deploy",
-    "cache:routes": "bun run --silent --cwd ./node_modules/rajt cache:routes",
-    "clean": "bun run --silent --cwd ./node_modules/rajt clean",
-    "clean:build": "bun run --silent --cwd ./node_modules/rajt clean:build",
-    "clean:temp": "bun run --silent --cwd ./node_modules/rajt clean:temp",
-    "ensure-dirs": "bun run --silent --cwd ./node_modules/rajt ensure-dirs",
-    "zip": "bun run --silent --cwd ./node_modules/rajt zip"
-  },
-  "dependencies": {
-    "rajt": "*"
+    "dev": "rajt dev --port=42000",
+    "build": "rajt build cf",
+    "deploy": "rajt deploy cf",
+    "make": "rajt make",
+    "make:config": "rajt make:config",
+    "make:enum": "rajt make:enum",
+    "make:route": "rajt make:route",
+    "make:action": "rajt make:action",
+    "make:endpoint": "rajt make:endpoint",
+    "make:migrate": "rajt make:migrate",
+    "make:migration": "rajt make:migration",
+    "make:model": "rajt make:model",
+    "make:job": "rajt make:job",
+    "make:seed": "rajt make:seed",
+    "make:seeder": "rajt make:seeder",
+    "make:test": "rajt make:test",
+    "migrate": "rajt migrate",
+    "routes": "rajt routes"
   },
   "devDependencies": {
-    "typescript": "^5.8.3"
+    "@types/node": "^25.1.0",
+    "bun-types": "^1.3.8",
+    "rajt": "*",
+    "typescript": "^5.9.3"
   }
 }

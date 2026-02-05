@@ -23,7 +23,7 @@ Resources:
     Properties:
       MemorySize: 128
       Timeout: 5
-      CodeUri: dist/
+      CodeUri: .rajt/dist/
       Handler: index.handler
       Runtime: provided.al2023
       Architectures:

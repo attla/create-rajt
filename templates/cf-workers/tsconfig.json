@@ -23,12 +23,20 @@
   },
   "include": [
     "actions",
+    "features",
+    "routes",
     "configs",
+    "enums",
+    "libs",
+    "locales",
+    "middlewares",
     "models",
     "utils"
   ],
   "exclude": [
     "src/**/__tests__/*",
-    "node_modules"
+    "node_modules",
+    "dist",
+    ".rajt"
   ]
 }
