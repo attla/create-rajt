@@ -27,6 +27,7 @@ const templates = [
 const renameFiles: Record<string, string | undefined> = {
   _gitignore: '.gitignore',
   _gitkeep: '.gitkeep',
+  'tests/_gitkeep': 'tests/.gitkeep',
 }
 
 function mkdirp(dir: string) {

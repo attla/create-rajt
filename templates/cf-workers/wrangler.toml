@@ -37,7 +37,7 @@ compatibility_flags = [ "nodejs_compat" ]
 # database_id = "DB_UUID"
 # preview_database_id = "PREVIEW_UUID"
 # migrations_table = "MIGRATION_TABLE_NAME"
-# migrations_dir = "MIGRATION_FOLDER_PATH"
+# migrations_dir = "migrations/sql"
 # persist_to = "./.wrangler/state"
 
 # [env.production]

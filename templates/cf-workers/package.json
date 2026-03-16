@@ -1,10 +1,11 @@
 {
   "name": "rajt-cf-workers-template",
   "version": "0.0.0",
+  "private": true,
   "main": ".rajt/dist/index.js",
   "type": "module",
   "scripts": {
-    "dev": "rajt dev --port=42000",
+    "dev": "rajt dev cf --port=4200",
     "build": "rajt build cf",
     "deploy": "rajt deploy cf",
     "make": "rajt make",

@@ -1,10 +1,11 @@
 {
   "name": "rajt-aws-template",
   "version": "0.0.0",
+  "private": true,
   "main": ".rajt/dist/index.js",
   "type": "module",
   "scripts": {
-    "dev": "rajt dev --port=42000",
+    "dev": "rajt dev --port=4200",
     "build": "rajt build aws",
     "deploy": "rajt deploy aws",
     "make": "rajt make",
